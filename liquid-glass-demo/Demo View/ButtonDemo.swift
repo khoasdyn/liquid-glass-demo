@@ -46,13 +46,13 @@ struct ButtonDemo: View {
                         .font(.title)
                         .foregroundStyle(.red.gradient)
                         .frame(width: 64, height: 64)
-                        .glassEffect(.regular)
+                        .glassEffect(.clear.interactive())
                     
                     Image(systemName: "tray.badge.fill")
                         .font(.title)
                         .foregroundStyle(.white)
                         .frame(width: 64, height: 64)
-                        .glassEffect(.clear.tint(.red.opacity(0.25)))
+                        .glassEffect(.clear.tint(.red.opacity(0.25)).interactive())
                     
                     Image(systemName: "sparkle.text.clipboard.fill")
                         .font(.title)

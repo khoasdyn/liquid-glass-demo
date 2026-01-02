@@ -17,6 +17,9 @@ struct HomeView: View {
                         DemoRow(demo: demo)
                     }
                 }
+                .alignmentGuide(.listRowSeparatorLeading) { dimension in
+                    dimension[.leading]
+                }
             }
             .navigationDestination(for: Demo.self) { demo in
                 demo.destinationView
