@@ -10,18 +10,18 @@ import SwiftUI
 enum Demo: String, CaseIterable, Identifiable, Hashable {
     case button
     case tabView
+    case glassEffectContainer
     
-    // MARK: - Identifiable Conformance
-    /// Using `self` means each enum case is its own unique identifier.
     var id: Self { self }
     
-    // MARK: - Display Properties
     var title: String {
         switch self {
         case .button:
             return "Button & Glass Effect"
         case .tabView:
             return "Tab View"
+        case .glassEffectContainer:
+            return "Glass Effect Container"
         }
     }
     
@@ -31,6 +31,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             return "Explore the new glassEffect modifier and glass button styles"
         case .tabView:
             return "The redesigned TabView with the new Tab API"
+        case .glassEffectContainer:
+            return "Learn how to use GlassEffectContainer for grouped glass elements"
         }
     }
     
@@ -40,6 +42,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             return "button.horizontal.fill"
         case .tabView:
             return "square.split.1x2.fill"
+        case .glassEffectContainer:
+            return "square.on.square"
         }
     }
     
@@ -49,11 +53,11 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             return .blue
         case .tabView:
             return .purple
+        case .glassEffectContainer:
+            return .mint
         }
     }
     
-    // MARK: - View Builder
-    /// Returns the destination view for navigation.
     @ViewBuilder
     var destinationView: some View {
         switch self {
@@ -61,6 +65,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             ButtonDemo()
         case .tabView:
             TabViewDemo()
+        case .glassEffectContainer:
+            GlassEffectContainerDemo()
         }
     }
 }
