@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabViewDemo: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var searchText = ""
     
     var body: some View {
@@ -27,8 +28,15 @@ struct TabViewDemo: View {
             Tab("Search", systemImage: "magnifyingglass", role: .search) {
                 NavigationStack {
                     Text("Search")
+                        .searchable(text: $searchText)
                 }
-                .searchable(text: $searchText)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Close") {
+                    dismiss()
+                }
             }
         }
     }

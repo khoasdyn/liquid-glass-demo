@@ -58,6 +58,15 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
         }
     }
     
+    var requiresFullScreen: Bool {
+        switch self {
+        case .tabView:
+            return true
+        case .button, .glassEffectContainer:
+            return false
+        }
+    }
+    
     @ViewBuilder
     var destinationView: some View {
         switch self {

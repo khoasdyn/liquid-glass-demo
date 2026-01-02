@@ -9,22 +9,36 @@ import SwiftUI
 
 // MARK: - Home View
 struct HomeView: View {
+    @State private var fullScreenDemo: Demo?
+    
     var body: some View {
         NavigationStack {
             List {
                 ForEach(Demo.allCases) { demo in
-                    NavigationLink(value: demo) {
-                        DemoRow(demo: demo)
+                    if demo.requiresFullScreen {
+                        Button {
+                            fullScreenDemo = demo
+                        } label: {
+                            DemoRow(demo: demo)
+                        }
+                        .tint(.primary)
+                    } else {
+                        NavigationLink(value: demo) {
+                            DemoRow(demo: demo)
+                        }
                     }
                 }
                 .alignmentGuide(.listRowSeparatorLeading) { dimension in
                     dimension[.leading]
                 }
             }
+            .navigationTitle("Liquid Glass Demos")
             .navigationDestination(for: Demo.self) { demo in
                 demo.destinationView
             }
-            .navigationTitle("Liquid Glass Demos")
+            .fullScreenCover(item: $fullScreenDemo) { demo in
+                demo.destinationView
+            }
         }
     }
 }
