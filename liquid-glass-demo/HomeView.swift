@@ -37,7 +37,9 @@ struct HomeView: View {
                 demo.destinationView
             }
             .fullScreenCover(item: $fullScreenDemo) { demo in
-                demo.destinationView
+                NavigationStack {
+                    demo.destinationView
+                }
             }
         }
     }
