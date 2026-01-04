@@ -11,6 +11,7 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
     case button
     case tabView
     case glassEffectContainer
+    case glassEffectTransition
     
     var id: Self { self }
     
@@ -22,6 +23,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             return "Tab View"
         case .glassEffectContainer:
             return "Glass Effect Container"
+        case .glassEffectTransition:
+            return "Glass Effect Transition"
         }
     }
     
@@ -33,6 +36,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             return "The redesigned TabView with the new Tab API"
         case .glassEffectContainer:
             return "Learn how to use GlassEffectContainer for grouped glass elements"
+        case .glassEffectTransition:
+            return "Discover transitions and animations with glass effects"
         }
     }
     
@@ -44,6 +49,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             return "square.split.1x2.fill"
         case .glassEffectContainer:
             return "square.on.square"
+        case .glassEffectTransition:
+            return "arrow.right.arrow.left.square"
         }
     }
     
@@ -55,6 +62,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             return .purple
         case .glassEffectContainer:
             return .mint
+        case .glassEffectTransition:
+            return .orange
         }
     }
     
@@ -62,7 +71,7 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
         switch self {
         case .tabView:
             return true
-        case .button, .glassEffectContainer:
+        case .button, .glassEffectContainer, .glassEffectTransition:
             return false
         }
     }
@@ -76,6 +85,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             TabViewDemo()
         case .glassEffectContainer:
             GlassEffectContainerDemo()
+        case .glassEffectTransition:
+            GlassEffectTransitionDemo()
         }
     }
 }
