@@ -12,6 +12,7 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
     case tabView
     case glassEffectContainer
     case glassEffectTransition
+    case toolbar
     
     var id: Self { self }
     
@@ -25,6 +26,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             return "Glass Effect Container"
         case .glassEffectTransition:
             return "Glass Effect Transition"
+        case .toolbar:
+            return "Toolbar"
         }
     }
     
@@ -38,6 +41,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             return "Learn how to use GlassEffectContainer for grouped glass elements"
         case .glassEffectTransition:
             return "Discover transitions and animations with glass effects"
+        case .toolbar:
+            return "Explore the new toolbar styles and placements"
         }
     }
     
@@ -51,6 +56,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             return "square.on.square"
         case .glassEffectTransition:
             return "arrow.right.arrow.left.square"
+        case .toolbar:
+            return "menubar.rectangle"
         }
     }
     
@@ -64,12 +71,14 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             return .mint
         case .glassEffectTransition:
             return .orange
+        case .toolbar:
+            return .red
         }
     }
     
     var requiresFullScreen: Bool {
         switch self {
-        case .tabView:
+        case .tabView, .toolbar:
             return true
         case .button, .glassEffectContainer, .glassEffectTransition:
             return false
@@ -87,6 +96,8 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
             GlassEffectContainerDemo()
         case .glassEffectTransition:
             GlassEffectTransitionDemo()
+        case .toolbar:
+            ToolbarDemo()
         }
     }
 }
