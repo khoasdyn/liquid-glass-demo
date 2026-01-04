@@ -78,7 +78,7 @@ enum Demo: String, CaseIterable, Identifiable, Hashable {
     
     var requiresFullScreen: Bool {
         switch self {
-        case .tabView, .toolbar:
+        case .tabView:
             return true
         case .button, .glassEffectContainer, .glassEffectTransition, .toolbar:
             return false
