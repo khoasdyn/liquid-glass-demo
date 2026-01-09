@@ -6,8 +6,9 @@
 
 import SwiftUI
 
-struct HomeViewWithStructs: View {
+// MARK: - Home View
 
+struct HomeViewWithStructs: View {
     @State private var fullScreenDemo: DemoItem?
     let demos: [DemoItem]
     
@@ -48,7 +49,7 @@ struct HomeViewWithStructs: View {
     }
 }
 
-
+// MARK: - Demo Row Component
 struct DemoItemRow: View {
     let demo: DemoItem
     
