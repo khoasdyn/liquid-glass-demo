@@ -5,7 +5,6 @@
 import SwiftUI
 
 // MARK: - The DemoItemProtocol
-
 protocol DemoItemProtocol: Identifiable, Hashable {
     
     var id: String { get }
