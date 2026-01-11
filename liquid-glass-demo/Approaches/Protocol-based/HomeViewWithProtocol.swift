@@ -10,10 +10,12 @@ import SwiftUI
 
 struct HomeViewWithProtocol: View {
     
-    @State private var fullScreenDemo: AnyDemoItem?
-    let demos: [AnyDemoItem]
+    @State private var fullScreenDemo: (any DemoItemProtocol)?
+    @State private var isShowingFullScreen = false
+
+    let demos: [any DemoItemProtocol]
     
-    init(demos: [AnyDemoItem] = DemoRegistry.allDemos) {
+    init(demos: [any DemoItemProtocol] = DemoRegistry.allDemosExistential) {
         self.demos = demos
     }
     
@@ -22,10 +24,11 @@ struct HomeViewWithProtocol: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(demos) { demo in
+                ForEach(demos, id: \.id) { demo in
                     if demo.requiresFullScreen {
                         Button {
                             fullScreenDemo = demo
+                            isShowingFullScreen = true
                         } label: {
                             ProtocolDemoRow(demo: demo)
                         }
@@ -43,9 +46,11 @@ struct HomeViewWithProtocol: View {
                 }
             }
             .navigationTitle("Liquid Glass Demos")
-            .fullScreenCover(item: $fullScreenDemo) { demo in
-                NavigationStack {
-                    demo.makeDestinationView()
+            .fullScreenCover(isPresented: $isShowingFullScreen) {
+                if let demo = fullScreenDemo {
+                    NavigationStack {
+                        demo.makeDestinationView()
+                    }
                 }
             }
         }
@@ -90,7 +95,7 @@ struct ProtocolDemoRow: View {
 
 #Preview("Filtered Demos") {
     // Demonstrate filtering: show only non-full-screen demos
-    let filteredDemos = DemoRegistry.allDemos.filter { !$0.requiresFullScreen }
+    let filteredDemos = DemoRegistry.allDemosExistential.filter { !$0.requiresFullScreen }
     return HomeViewWithProtocol(demos: filteredDemos)
 }
 

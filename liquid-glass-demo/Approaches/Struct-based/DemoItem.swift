@@ -10,7 +10,6 @@
 import SwiftUI
 
 struct DemoItem: Identifiable, Hashable {
-    
     let id: UUID
     let title: String
     let description: String
@@ -56,9 +55,7 @@ struct DemoItem: Identifiable, Hashable {
     }
 }
 
-
 enum DemoItems {
-    
     static let all: [DemoItem] = [
                 
         DemoItem(
@@ -97,6 +94,13 @@ enum DemoItems {
         DemoItem(
             title: "Toolbar",
             description: "Explore the new toolbar styles and placements",
+            iconName: "menubar.rectangle",
+            iconColor: .red,
+            destination: { ToolbarDemo() }
+        ),
+        DemoItem(
+            title: "Toolbar 2",
+            description: "This one is intentionally duplicated to test",
             iconName: "menubar.rectangle",
             iconColor: .red,
             destination: { ToolbarDemo() }

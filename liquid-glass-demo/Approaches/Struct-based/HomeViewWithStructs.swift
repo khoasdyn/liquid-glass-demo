@@ -84,7 +84,5 @@ struct DemoItemRow: View {
 }
 
 #Preview("Custom Subset") {
-    // This preview shows how easy it is to pass a custom list!
-    // You could filter demos, show only certain ones, etc.
-    HomeViewWithStructs(demos: Array(DemoItems.all.prefix(2)))
+    HomeViewWithStructs(demos: Array(DemoItems.all.prefix(4)))
 }

@@ -16,7 +16,7 @@ struct ButtonDemoItem: DemoItemProtocol {
     let description = "Explore the new glassEffect modifier and glass button styles"
     let iconName = "button.horizontal.fill"
     let iconColor = Color.blue
-
+    
     func makeDestinationView() -> AnyView {
         AnyView(ButtonDemo())
     }
@@ -30,7 +30,7 @@ struct TabViewDemoItem: DemoItemProtocol {
     let description = "The redesigned TabView with the new Tab API"
     let iconName = "square.split.1x2.fill"
     let iconColor = Color.purple
-
+    
     var requiresFullScreen: Bool {
         true
     }
@@ -84,14 +84,6 @@ struct ToolbarDemoItem: DemoItemProtocol {
 
 // MARK: - Demo Registry
 enum DemoRegistry {
-    static let allDemos: [AnyDemoItem] = [
-        AnyDemoItem(ButtonDemoItem()),
-        AnyDemoItem(TabViewDemoItem()),
-        AnyDemoItem(GlassEffectContainerDemoItem()),
-        AnyDemoItem(GlassEffectTransitionDemoItem()),
-        AnyDemoItem(ToolbarDemoItem())
-    ]
-    
     static let allDemosExistential: [any DemoItemProtocol] = [
         ButtonDemoItem(),
         TabViewDemoItem(),
